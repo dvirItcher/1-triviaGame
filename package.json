@@ -1,0 +1,26 @@
+{
+  "name": "the-game",
+  "version": "1.0.0",
+  "description": "triviaGame",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "dvir",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "http": "^0.0.1-security",
+    "socket.io": "^4.7.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvirItcher/trivia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dvirItcher/trivia/issues"
+  },
+  "homepage": "https://github.com/dvirItcher/trivia#readme"
+}

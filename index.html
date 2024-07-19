@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplayer Trivia Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>האחוזון העליון</h1>
+    <h2>חידון בת-מצווה למעיין</h2>
+  </header>
+  <main>
+  <div id="nameInput" class="container">
+    <input type="text" id="name" placeholder="הכנס שם">
+    <button onclick="joinGame()">הצטרף למשחק</button>
+    <div id="joinStatus" style="color: red;" class="status-message"></div>
+  </div>
+  <div id="game" class="container" style="display:none;">
+    <h3 id="precent"></h3>
+    <div id="questionContainer" class="question-container">
+      <img id="questionImage" class="question-image" style="display:none;" />
+    </div>
+    <div id="answerContainer" style="display: none;">
+      <input type="text" id="answer" class="answer-input" placeholder="הכנס תשובה" style="display: none;">
+      <button id="submitAnswer" onclick="submitAnswer()" class="button-primary">שלח תשובה</button>
+      <button id="skipQuestion" onclick="skipQuestion()" class="button-secondary">דלג שאלה</button>
+    </div>
+    <div id="status" class="status-message"></div>
+    <div id="timer" class="timer"></div>
+    <h3><span id="playerCount"></span> שחקנים מחוברים</h3>
+    <h3 style="color: rgb(105, 105, 105);"> שחקנים עם דלג שאלה :(<span id="withSkipCount"></span>)</h3>
+    <ul id="playersWithSkipList" class="player-list"></ul>
+    <h3 style="color: rgb(105, 105, 105);"> שחקנים בלי דלג שאלה :(<span id="withoutSkipCount"></span>)</h3>
+    <ul id="playersWithoutSkipList" class="player-list"></ul>
+    <h3> שחקנים שעפו הסיבוב : <span id="kickedOutCount"></span></h3>
+  </div>
+  <div id="top-players" style="display: none;" class="container">
+    <h1 style="color: #ff02b3">המנצחים</h1>
+    <ul id="top-players-list" class="player-list"></ul>
+  </div>
+</main>
+  <aside class="admin-controls">
+    <h3>Admin Controls</h3>
+    <button onclick="togglePlayerJoin()" class="button-admin">Toggle Player Joining</button>
+    <button onclick="previewNextQuestion()" class="button-admin">Preview Next Question</button>
+    <button onclick="startGame()" class="button-admin">Start Game</button>
+    <button onclick="revealAnswer()" class="button-admin">Reveal Answer</button>
+    <button onclick="nextQuestion()" class="button-admin">Next Question</button>
+    <button onclick="RevealTop5Players()" class="button-admin">Reveal top 5 players</button>
+  </aside>
+</body>
+</html>
